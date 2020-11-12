@@ -1,26 +1,28 @@
 = iCalendar Message-Based Interoperability Protocol (iMIP)
-:doctype: rfc
-:abbrev: rfc6047
+:doctype: ietf
+:abbrev: RFC 6047
+:obsoletes: RFC 2447
+:docnumber: 6047
+:revdate: 2010-12-01T00:00:00Z
 :submission-type: IETF
 :title: iCalendar Message-Based Interoperability Protocol (iMIP)
 :name: 6047
-:docnumber: 6047
 :status: standard
 :consensus: true
 :keyword: protocol,iCalendar,email,MIME,SMTP
-:obsoletes: 2447
-:revdate: 2020-01-21
-:fullname: Alexey Melnikov
-:lastname: Melnikov
+:toc-include: yes
+:initials: A.
+:surname: Melnikov
+:givenname: Alexey
+:affiliation: Isode Ltd
 :address: 5 Castle Business Village \ 36 Station Road \ Hampton, Middlesex  TW12 2BX \ UK
 :email: alexey.melnikov@isode.com
 :role: editor
 :uri: https://datatracker.ietf.org/doc/rfc6047/
 :docfile: document.adoc
 :mn-document-class: ietf
-:mn-output-extensions: xml,rfc,txt,html,nits,rxl
+:mn-output-extensions: xml,txt,html,pdf
 
-        
 
 [abstract]
 == Abstract
@@ -83,8 +85,8 @@ than English.
 
 This document provides the transport-specific information ("binding")
 necessary to convey iCalendar Transport-independent Interoperability
-Protocol (iTIP) [iTIP] over Internet email (using MIME) as defined in
-[RFC5322] and [RFC2045]. Therefore, this document defines the
+Protocol (iTIP) <<iTIP>> over Internet email (using MIME) as defined in
+<<RFC5322>> and <<RFC2045>>. Therefore, this document defines the
 iCalendar Message-Based Interoperability Protocol (iMIP).
 
 === Related Memos
@@ -95,10 +97,10 @@ scheduling standards.
 
 This document specifies an Internet email binding for iTIP.
 
-[iCAL] specifies a core specification of objects, data types,
+<<iCAL>> specifies a core specification of objects, data types,
 properties, and property parameters.
 
-[iTIP] specifies an interoperability protocol for scheduling between
+<<iTIP>> specifies an interoperability protocol for scheduling between
 different implementations.
 
 This memo does not attempt to repeat the specification of concepts or
@@ -111,37 +113,37 @@ concepts or definitions.
 
 The mechanisms defined in this memo are defined in prose. In order
 to refer to elements of the calendaring and scheduling model, core
-object, or interoperability protocol defined in [iCAL] and [iTIP],
+object, or interoperability protocol defined in <<iCAL>> and <<iTIP>>,
 some formatting conventions have been used.
 
 The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
 "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this
-document are to be interpreted as described in RFC 2119 [RFC2119].
+document are to be interpreted as described in RFC 2119 <<RFC2119>>.
 
 Calendaring and scheduling roles are referred to in quoted strings of
 text with the first character of each word in uppercase. For
 example, "Organizer" refers to a role of a "Calendar User" within the
-scheduling protocol defined by [iTIP].
+scheduling protocol defined by <<iTIP>>.
 
-Calendar components defined by [iCAL] are referred to with
+Calendar components defined by <<iCAL>> are referred to with
 capitalized, quoted strings of text. All calendar components start
 with the letter "V". For example, "VEVENT" refers to the event
 calendar component, "VTODO" refers to the to-do calendar component,
 and "VJOURNAL" refers to the daily journal calendar component.
 
-Scheduling methods defined by [iTIP] are referred to with
+Scheduling methods defined by <<iTIP>> are referred to with
 capitalized, quoted strings of text. For example, "REQUEST" refers
 to the method for requesting a scheduling calendar component be
 created or modified; "REPLY" refers to the method a recipient of a
 request uses to update their status with the "Organizer" of the
 calendar component.
 
-Properties defined by [iCAL] are referred to with capitalized, quoted
+Properties defined by <<iCAL>> are referred to with capitalized, quoted
 strings of text, followed by the word "property". For example,
 "ATTENDEE" property refers to the iCalendar property used to convey
 the calendar address of a "Calendar User".
 
-Property parameters defined by [iCAL] are referred to with lowercase,
+Property parameters defined by <<iCAL>> are referred to with lowercase,
 quoted strings of text, followed by the word "parameter". For
 example, "value" parameter refers to the iCalendar property parameter
 used to override the default data type for a property value.
@@ -149,9 +151,9 @@ used to override the default data type for a property value.
 
 === Terminology
 
-The email terms used in this memo are defined in [RFC5322] and
-[RFC2045]. The calendaring and scheduling terms used in this memo
-are defined in [iCAL] and [iTIP].
+The email terms used in this memo are defined in <<RFC5322>> and
+<<RFC2045>>. The calendaring and scheduling terms used in this memo
+are defined in <<iCAL>> and <<iTIP>>.
 
 
 == MIME Message Format Binding
@@ -165,7 +167,7 @@ is the "Organizer" and the recipient is an "Attendee" of the event.
 In the case of a "response" method, the originator is an "Attendee"
 and the recipient is the "Organizer" of the event.
 
-The [RFC5322] "Reply-To" header field typically contains the email
+The <<RFC5322>> "Reply-To" header field typically contains the email
 address of the originator of the scheduling message. However, this
 cannot be guaranteed because the sender of the iMIP message might not
 be the originator of the scheduling message and the sender's "Mail
@@ -177,7 +179,7 @@ originator's address into the "Reply-To" email header field.
 
 A MIME entity containing content information formatted according to
 this document will be referenced as a "text/calendar" content type
-[iCAL]. It is assumed that this content type will be transported
+<<iCAL>>. It is assumed that this content type will be transported
 through a MIME electronic mail transport.
 
 
@@ -186,13 +188,13 @@ through a MIME electronic mail transport.
 This section addresses several aspects of security including
 authentication, authorization, and confidentiality. Authentication
 and confidentiality can be achieved using Secure/MIME (S/MIME)
-[RFC5750] [RFC5751], which uses the Security Multiparts framework for
-MIME [RFC1847].
+<<RFC5750>> <<RFC5751>>, which uses the Security Multiparts framework for
+MIME <<RFC1847>>.
 
 
 ==== Authorization
 
-In iTIP messages [iTIP], only the "Organizer" is authorized to modify
+In iTIP messages <<iTIP>>, only the "Organizer" is authorized to modify
 or cancel calendar entries she organizes. That is,
 spoof@xyz.example.net is not allowed to modify or cancel a meeting
 that was organized by a@example.com. Furthermore, only the
@@ -205,7 +207,7 @@ Implementations of iMIP SHOULD verify the authenticity of the creator
 of an iCalendar object before taking any action. Methods for doing
 this are presented later in this document.
 
-[RFC1847] message flow in iTIP supports someone working on behalf of
+<<RFC1847>> message flow in iTIP supports someone working on behalf of
 a "Calendar User" through use of the "sent-by" parameter that is
 associated with the "ATTENDEE" and "ORGANIZER" properties. However,
 there is no mechanism to verify whether or not a "Calendar User" has
@@ -217,7 +219,7 @@ make that decision.
 [[scls_2-2-2]]
 ==== Authentication
 
-Authentication MUST be performed using S/MIME [RFC5750] [RFC5751].
+Authentication MUST be performed using S/MIME <<RFC5750>> <<RFC5751>>.
 Authentication is possible only on messages that have been signed.
 Unauthenticated messages (i.e., unsigned messages) may not be
 trusted.
@@ -227,7 +229,7 @@ trusted.
 ==== Confidentiality
 
 To ensure confidentiality using iMIP, implementations SHOULD utilize
-encryption specified in S/MIME [RFC5750] [RFC5751]. iMIP does not
+encryption specified in S/MIME <<RFC5750>> <<RFC5751>>. iMIP does not
 restrict a "Calendar User Agent" (CUA) from forwarding iCalendar
 objects to other users or agents.
 
@@ -236,13 +238,13 @@ objects to other users or agents.
 
 The calendar address specified within the "ORGANIZER" and "ATTENDEE"
 properties in an iCalendar object sent using iMIP MUST be a proper
-"mailto:" [MAILTO] URI specification for the corresponding
+"mailto:" <<MAILTO>> URI specification for the corresponding
 "Organizer" or "Attendee" of the "VEVENT" or "VTODO".
 
-Because [iTIP] does not preclude "Attendees" from forwarding
-"VEVENT"s or "VTODO"s to others, the [RFC5322] "Sender" value may not
+Because <<iTIP>> does not preclude "Attendees" from forwarding
+"VEVENT"s or "VTODO"s to others, the <<RFC5322>> "Sender" value may not
 equal that of the "Organizer". Additionally, the "Organizer" or
-"Attendee" cannot be reliably inferred by the [RFC5322] "Sender" or
+"Attendee" cannot be reliably inferred by the <<RFC5322>> "Sender" or
 "Reply-To" header field values of an iMIP message. The relevant
 address MUST be ascertained by opening the "text/calendar" MIME body
 part and examining the "ATTENDEE" and "ORGANIZER" properties.
@@ -251,15 +253,15 @@ part and examining the "ATTENDEE" and "ORGANIZER" properties.
 === Content-Type Header Field
 
 A MIME body part containing content information that conforms to this
-document MUST have an [RFC2045] "Content-Type" value of
-"text/calendar". The [RFC2045] "Content-Type" header field MUST also
+document MUST have an <<RFC2045>> "Content-Type" value of
+"text/calendar". The <<RFC2045>> "Content-Type" header field MUST also
 include the MIME parameter "method". The value MUST be the same
 (ignoring case) as the value of the "METHOD" property within the
 iCalendar object.
 
 NOTE: A MIME message containing multiple iCalendar objects with
 different "method" values MUST be further encapsulated with a
-"multipart/mixed" MIME entity [RFC2046]. This will allow each of
+"multipart/mixed" MIME entity <<RFC2046>>. This will allow each of
 the iCalendar objects to be encapsulated within their own
 "text/calendar" MIME entity.
 
@@ -268,12 +270,12 @@ NOTE: A MIME body part with a "Content-Type" value of
 considered to be an iMIP body part and thus is not subject to the
 requirements specified in this document.
 
-Note that according to [iCAL] the default character set for iCalendar
-objects is UTF-8 [UTF-8]. However, the default character set for a
-"text/*" MIME entity according to [RFC2046] is US-ASCII. Thus, a
+Note that according to <<iCAL>> the default character set for iCalendar
+objects is UTF-8 <<UTF-8>>. However, the default character set for a
+"text/*" MIME entity according to <<RFC2046>> is US-ASCII. Thus, a
 "charset" MIME parameter MUST be present if the iCalendar object
 contains characters that can't be represented in the US-ASCII
-character set and, as specified in [iCAL], it MUST have the value
+character set and, as specified in <<iCAL>>, it MUST have the value
 "UTF-8".
 
 The optional "component" MIME parameter defines the iCalendar
@@ -294,7 +296,7 @@ The "text/calendar" content type allows for the scheduling message
 type to be included in a MIME message with other content information
 (i.e., "multipart/mixed") or included in a MIME message with a clear-
 text, human-readable form of the scheduling message (i.e.,
-"multipart/alternative" [RFC2046]).
+"multipart/alternative" <<RFC2046>>).
 
 In order to permit the information in the scheduling message to be
 understood by MIME User Agents (UAs) that do not support the
@@ -307,7 +309,7 @@ alternative starting times.
 
 CUAs can use other MIME parameters of the "Content-Type" header
 field, as well as a language specified in the Content-Language header
-field [RFC3282], to pick a "text/calendar" part for processing if a
+field <<RFC3282>>, to pick a "text/calendar" part for processing if a
 "multipart/alternative" MIME message contains more than one
 "text/calendar" part.
 
@@ -321,8 +323,8 @@ all of them.
 === Content-Transfer-Encoding Header Field
 
 Unless an iMIP message is transported over 8-bit clean transport
-(such as SMTP [8BITMIME]), a transfer encoding such as quoted-
-printable or base64 [RFC2045] MUST be used for iCalendar objects
+(such as SMTP <<BITMIME>>), a transfer encoding such as quoted-
+printable or base64 <<RFC2045>> MUST be used for iCalendar objects
 containing any characters that can't be represented in the US-ASCII
 character set. For example:
 
@@ -366,7 +368,7 @@ END:VCALENDAR
 
 Implementations MAY include a "Content-Disposition" header field to
 define a file name for an iCalendar object. However, the handling of
-a MIME part MUST be based on its [RFC2045] "Content-Type" and not on
+a MIME part MUST be based on its <<RFC2045>> "Content-Type" and not on
 the extension specified in the "Content-Disposition", as different
 email malware is known to trick User Agents into misinterpreting
 content of messages by specifying a file extension in the Content-Disposition
@@ -377,15 +379,15 @@ header field that doesn't correspond to the value of the
 == Security Considerations
 
 The security threats that applications must address when implementing
-iTIP are detailed in [iTIP]. In particular, two spoofing threats are
-identified in Section 6.1 of [iTIP]: spoofing the "Organizer", and
+iTIP are detailed in <<iTIP>>. In particular, two spoofing threats are
+identified in Section 6.1 of <<iTIP>>: spoofing the "Organizer", and
 spoofing an "Attendee". To address these threats, the originator of
 an iCalendar object must be authenticated by a recipient. Once
 authenticated, a determination can be made as to whether or not the
 originator is authorized to perform the requested operation.
 Compliant applications MUST support signing and encrypting
 "text/calendar" body parts using a mechanism based on S/MIME
-[RFC5750] [RFC5751] in order to facilitate the authentication of the
+<<RFC5750>> <<RFC5751>> in order to facilitate the authentication of the
 originator of the iCalendar object (see <<scls_2-2-2>> and <<scls_2-2-3>>).
 The steps for processing a signed iMIP message are described below:
 
@@ -393,7 +395,7 @@ The steps for processing a signed iMIP message are described below:
 containing the iCalendar object. This is the "signer". (Note
 that the email address of the signer MUST be specified in the
 rfc822Name field of the "subject alternative name" extension of
-the signer certificate, as specified in [RFC5280],
+the signer certificate, as specified in <<RFC5280>>,
 Section 4.1.2.6.) Note that the signer is not necessarily the
 person sending an e-mail message, since an e-mail message can be
 forwarded.
@@ -401,7 +403,7 @@ forwarded.
 . Correlate the signer to either an "ATTENDEE" property or to the
 "ORGANIZER" property in the iCalendar object, based on the method
 and the calendar component specified in the iCalendar object, as
-defined in Section 1.4 of [iTIP]. If the signer cannot be
+defined in Section 1.4 of <<iTIP>>. If the signer cannot be
 correlated to an "ATTENDEE"/"ORGANIZER" property, then actively
 warn the user controlling the "Calendar User Agent" that the
 iCalendar object is untrusted, and encourage the user to ignore
@@ -412,7 +414,7 @@ send the message, and then (b) allow the CUA to accept and process
 the iCalendar object.
 
 . Determine whether or not the "ATTENDEE"/"ORGANIZER" is authorized
-to perform the operation as defined by [iTIP]. If the conditions
+to perform the operation as defined by <<iTIP>>. If the conditions
 are not met, ignore the message.
 
 . If all the above conditions are met, the message can be processed.
@@ -421,10 +423,10 @@ S/MIME signing also protects against malicious changes to messages in
 transit.
 
 If calendar confidentiality is required by the sender, signed iMIP
-messages SHOULD be encrypted by a mechanism based on S/MIME [RFC5750]
-[RFC5751]. If iMIP is used within a single ADministrative Management
-Domain (ADMD) [RFC5598], SMTP STARTTLS [SMTP-TLS] (together with
-STARTTLS in IMAP/POP [IMAP-POP-TLS]) MAY alternatively be used to
+messages SHOULD be encrypted by a mechanism based on S/MIME <<RFC5750>>
+<<RFC5751>>. If iMIP is used within a single ADministrative Management
+Domain (ADMD) <<RFC5598>>, SMTP STARTTLS <<SMTP-TLS>> (together with
+STARTTLS in IMAP/POP <<IMAP-POP-TLS>>) MAY alternatively be used to
 provide calendar confidentiality.
 
 Once a signed and/or encrypted iMIP message is received and
@@ -441,7 +443,7 @@ encrypting.
 It is possible to receive iMIP messages sent by someone working on
 behalf of another "Calendar User". This is determined by examining
 the "sent-by" parameter in the relevant "ORGANIZER" or "ATTENDEE"
-property. [iCAL] and [iTIP] provide no mechanism to verify that a
+property. <<iCAL>> and <<iTIP>> provide no mechanism to verify that a
 "Calendar User" has authorized someone else to work on their behalf.
 To address this security issue, implementations MUST provide
 mechanisms for the "Calendar Users" to make that decision before
@@ -462,9 +464,9 @@ A security consideration associated with the use of the Content-
 Disposition header field is described in <<scls_2-6>>.
 
 Use of S/MIME makes the security considerations discussed in
-[RFC5750] [RFC5751] relevant to this document. For additional
+<<RFC5750>> <<RFC5751>> relevant to this document. For additional
 security considerations regarding certificate and Certificate
-Revocation List (CRL) verification, please see [RFC5280].
+Revocation List (CRL) verification, please see <<RFC5280>>.
 
 
 == Examples
@@ -811,10 +813,10 @@ messaging transport to exchange iCalendar objects.
 
 === Use of Content and Message IDs
 
-The [iCAL] specification makes frequent use of the URI for data types
+The <<iCAL>> specification makes frequent use of the URI for data types
 in properties such as "DESCRIPTION", "ATTACH", "CONTACT", and others.
 Two forms of URIs are the Message ID (MID) and the Content-ID (CID).
-These are defined in [RFC2392]. Although [RFC2392] allows
+These are defined in <<RFC2392>>. Although <<RFC2392>> allows
 referencing messages or MIME body parts in other MIME entities or
 stores, it is strongly RECOMMENDED that iMIP implementations include
 all referenced messages and body parts in a single MIME entity.
@@ -826,7 +828,7 @@ CUA will have the access or the authorization to view those objects.
 
 == IANA Considerations
 
-The "text/calendar" MIME media type was registered in [iCAL].
+The "text/calendar" MIME media type was registered in <<iCAL>>.
 
 
 
@@ -835,71 +837,156 @@ The "text/calendar" MIME media type was registered in [iCAL].
 [bibliography]
 === Normative References
 
-* [[[iCAL,iCAL]]] Desruisseaux, B., Ed., "Internet Calendaring and Scheduling Core Object Specification (iCalendar)", RFC 5545, September 2009.
+* [[[RFC5322,RFC 5322]]]
 
-* [[[iTIP,iTIP]]] Daboo, C., Ed., "iCalendar Transport-Independent Interoperability Protocol (iTIP)", RFC 5546, December 2009.
+* [[[RFC1847,RFC 1847]]]
 
-* [[[RFC5322,RFC 5322]]] Resnick, P., Ed., "Internet Message Format", RFC 5322, October 2008.
+* [[[RFC2045,RFC 2045]]]
 
-* [[[MAILTO,MAILTO]]] Duerst, M., Masinter, L., and J. Zawinski, "The 'mailto'
-URI Scheme", RFC 6068, October 2010.
+* [[[RFC2046,RFC 2046]]]
 
-* [[[RFC1847,RFC 1847]]] Galvin, J., Murphy, S., Crocker, S., and N. Freed,
-"Security Multiparts for MIME: Multipart/Signed and
-Multipart/Encrypted", RFC 1847, October 1995.
+* [[[RFC2392,RFC 2392]]]
 
-* [[[RFC2045,RFC 2045]]] Freed, N. and N. Borenstein, "Multipurpose Internet Mail
-Extensions (MIME) Part One: Format of Internet Message
-Bodies", RFC 2045, November 1996.
+* [[[RFC2119,RFC 2119]]]
 
-* [[[RFC2046,RFC 2046]]] Freed, N. and N. Borenstein, "Multipurpose Internet Mail
-Extensions (MIME) Part Two: Media Types", RFC 2046,
-November 1996.
+* [[[RFC5750,RFC 5750]]]
 
-* [[[RFC2392,RFC 2392]]] Levinson, E., "Content-ID and Message-ID Uniform Resource
-Locators", RFC 2392, August 1998.
+* [[[RFC5751,RFC 5751]]]
 
-* [[[RFC2119,RFC 2119]]] Bradner, S., "Key words for use in RFCs to Indicate
-Requirement Levels", BCP 14, RFC 2119, March 1997.
+* [[[RFC5280,RFC 5280]]]
 
-* [[[UTF-8,UTF-8]]] Yergeau, F., "UTF-8, a transformation format of ISO
-10646", STD 63, RFC 3629, November 2003.
+[%bibitem]
+==== Internet Calendaring and Scheduling Core Object Specification (iCalendar)
+id:: iCAL
+contributor.role:: author
+contributor.person.name.initial:: B.
+contributor.person.name.surname:: Desruisseaux
+link:: https://www.hjp.at/doc/rfc/rfc5545.html
+type::: techreport
+content::: https://www.rfc-editor.org/rfc/pdfrfc/rfc6047.txt.pdf
+date::  September 2009.
+type::: published
+value::: 2009
+keyword::
+abstract::
 
-* [[[SMTP-TLS,SMTP-TLS]]] Hoffman, P., "SMTP Service Extension for Secure SMTP over
-Transport Layer Security", RFC 3207, February 2002.
+[%bibitem]
+==== iCalendar Transport-Independent Interoperability Protocol (iTIP)
+id:: iTIP
+contributor.role:: author
+contributor.person.name.initial:: C.
+contributor.person.name.surname:: Daboo
+link:: https://www.hjp.at/doc/rfc/rfc5546.html
+type::: techreport
+content::: https://www.hjp.at/doc/rfc/rfc5546.html
+date::  December 2009.
+type::: published
+value::: 2009
+keyword::
+abstract::
 
-* [[[IMAP-POP-TLS,IMAP-POP-TLS]]] Newman, C., "Using TLS with IMAP, POP3 and ACAP",
-RFC 2595, June 1999.
+[%bibitem]
+==== The 'mailto' URI Scheme
+id:: MAILTO
+contributor.role:: author
+contributor.person.name.initial:: M.
+contributor.person.name.surname:: Duerst
+contributor.role_2:: author
+contributor.person.name.initial_2:: L.
+contributor.person.name.surname_2:: Masinter
+contributor.role_3:: author
+contributor.person.name.initial_3:: J.
+contributor.person.name.surname_3:: Zawinski
+link:: https://www.hjp.at/(en)/doc/rfc/rfc6068.html
+type::: techreport
+content::: https://www.hjp.at/(en)/doc/rfc/rfc6068.html
+date::  October 2010.
+type::: published
+value::: 2010
+keyword::
+abstract::
 
-* [[[RFC5750,RFC 5750]]] Ramsdell, B. and S. Turner, "Secure/Multipurpose Internet
-Mail Extensions (S/MIME) Version 3.2 Certificate
-Handling", RFC 5750, January 2010.
+[%bibitem]
+==== UTF-8, a transformation format of ISO 10646
+id:: UTF-8
+contributor.role:: author
+contributor.person.name.initial:: F.
+contributor.person.name.surname:: Yergeau
+link:: https://www.hjp.at/doc/rfc/rfc3629.html
+type::: techreport
+content::: https://www.hjp.at/doc/rfc/rfc3629.html
+date::  November 2003.
+type::: published
+value::: 2003
+keyword::
+abstract::
 
-* [[[RFC5751,RFC 5751]]] Ramsdell, B. and S. Turner, "Secure/Multipurpose Internet
-Mail Extensions (S/MIME) Version 3.2 Message
-Specification", RFC 5751, January 2010.
+[%bibitem]
+==== SMTP Service Extension for Secure SMTP over Transport Layer Security
+id:: SMTP-TLS
+contributor.role:: author
+contributor.person.name.initial:: P.
+contributor.person.name.surname:: Hoffman
+link:: https://www.hjp.at/doc/rfc/rfc3207.html
+type::: techreport
+content::: https://www.hjp.at/doc/rfc/rfc3207.html
+date::  February 2002.
+type::: published
+value::: 2002
+keyword::
+abstract::
 
-* [[[RFC5280,RFC 5280]]] Cooper, D., Santesson, S., Farrell, S., Boeyen, S.,
-Housley, R., and W. Polk, "Internet X.509 Public Key
-Infrastructure Certificate and Certificate Revocation
-List (CRL) Profile", RFC 5280, May 2008.
-
+[%bibitem]
+==== Using TLS with IMAP, POP3 and ACAP
+id:: IMAP-POP-TLS
+contributor.role:: author
+contributor.person.name.initial:: C.
+contributor.person.name.surname:: Newman
+link:: https://www.hjp.at/doc/rfc/rfc2595.html
+type::: techreport
+content::: https://www.hjp.at/doc/rfc/rfc2595.html
+date::  June 1999.
+type::: published
+value::: 1999
+keyword::
+abstract::
 
 [bibliography]
 === Informative References
 
-* [[[BITMIME,BITMIME]]] Klensin, J., Freed, N., Rose, M., Stefferud, E., and D.
-Crocker, "SMTP Service Extension for 8bit-MIMEtransport",
-RFC 1652, July 1994.
+* [[[RFC5598,RFC 5598]]]
 
-* [[[RFC5598,RFC 5598]]] Crocker, D., "Internet Mail Architecture", RFC 5598, July
-2009.
+* [[[RFC3282,RFC 3282]]]
 
-* [[[RFC3282,RFC 3282]]] Alvestrand, H., "Content Language Headers", RFC 3282, May
-2002.
+[%bibitem]
+==== SMTP Service Extension for 8bit-MIMEtransport
+id:: BITMIME
+contributor.role:: author
+contributor.person.name.initial:: J.
+contributor.person.name.surname:: Klensin
+contributor.role_2:: author
+contributor.person.name.initial_2:: N.
+contributor.person.name.surname_2:: Freed
+contributor.role_3:: author
+contributor.person.name.initial_3:: M.
+contributor.person.name.surname_3:: Rose
+contributor.role_4:: author
+contributor.person.name.initial_4:: E.
+contributor.person.name.surname_4:: Stefferud
+contributor.role_5:: author
+contributor.person.name.initial_5:: D.
+contributor.person.name.surname_5:: Crocker
+link:: https://www.hjp.at/doc/rfc/rfc2595.html
+type::: techreport
+content::: https://www.hjp.at/doc/rfc/rfc2595.html
+date::  July 1994.
+type::: published
+value::: 1994
+keyword::
+abstract::
 
 
-[appendix]
+[appendix,obligation=informative]
 == Changes since RFC 2447
 
 Updated references. Split them into Normative and Informative.
