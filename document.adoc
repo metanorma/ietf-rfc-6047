@@ -10,12 +10,11 @@
 :status: standard
 :consensus: true
 :keyword: protocol,iCalendar,email,MIME,SMTP
-:toc-include: yes
+:toc-include: true
 :initials: A.
 :surname: Melnikov
 :givenname: Alexey
 :affiliation: Isode Ltd
-:address: 5 Castle Business Village \ 36 Station Road \ Hampton, Middlesex  TW12 2BX \ UK
 :email: alexey.melnikov@isode.com
 :role: editor
 :uri: https://datatracker.ietf.org/doc/rfc6047/
