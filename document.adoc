@@ -855,101 +855,17 @@ The "text/calendar" MIME media type was registered in <<iCAL>>.
 
 * [[[RFC5280,RFC 5280]]]
 
-[%bibitem]
-==== Internet Calendaring and Scheduling Core Object Specification (iCalendar)
-id:: iCAL
-contributor.role:: author
-contributor.person.name.initial:: B.
-contributor.person.name.surname:: Desruisseaux
-link:: https://www.hjp.at/doc/rfc/rfc5545.html
-type::: techreport
-content::: https://www.rfc-editor.org/rfc/pdfrfc/rfc6047.txt.pdf
-date::  September 2009.
-type::: published
-value::: 2009
-keyword::
-abstract::
+* [[[iCAL,RFC 5545]]]
 
-[%bibitem]
-==== iCalendar Transport-Independent Interoperability Protocol (iTIP)
-id:: iTIP
-contributor.role:: author
-contributor.person.name.initial:: C.
-contributor.person.name.surname:: Daboo
-link:: https://www.hjp.at/doc/rfc/rfc5546.html
-type::: techreport
-content::: https://www.hjp.at/doc/rfc/rfc5546.html
-date::  December 2009.
-type::: published
-value::: 2009
-keyword::
-abstract::
+* [[[iTIP,RFC 5546]]]
 
-[%bibitem]
-==== The 'mailto' URI Scheme
-id:: MAILTO
-contributor.role:: author
-contributor.person.name.initial:: M.
-contributor.person.name.surname:: Duerst
-contributor.role_2:: author
-contributor.person.name.initial_2:: L.
-contributor.person.name.surname_2:: Masinter
-contributor.role_3:: author
-contributor.person.name.initial_3:: J.
-contributor.person.name.surname_3:: Zawinski
-link:: https://www.hjp.at/(en)/doc/rfc/rfc6068.html
-type::: techreport
-content::: https://www.hjp.at/(en)/doc/rfc/rfc6068.html
-date::  October 2010.
-type::: published
-value::: 2010
-keyword::
-abstract::
+* [[[MAILTO,RFC 6068]]]
 
-[%bibitem]
-==== UTF-8, a transformation format of ISO 10646
-id:: UTF-8
-contributor.role:: author
-contributor.person.name.initial:: F.
-contributor.person.name.surname:: Yergeau
-link:: https://www.hjp.at/doc/rfc/rfc3629.html
-type::: techreport
-content::: https://www.hjp.at/doc/rfc/rfc3629.html
-date::  November 2003.
-type::: published
-value::: 2003
-keyword::
-abstract::
+* [[[UTF-8,RFC 3629]]]
 
-[%bibitem]
-==== SMTP Service Extension for Secure SMTP over Transport Layer Security
-id:: SMTP-TLS
-contributor.role:: author
-contributor.person.name.initial:: P.
-contributor.person.name.surname:: Hoffman
-link:: https://www.hjp.at/doc/rfc/rfc3207.html
-type::: techreport
-content::: https://www.hjp.at/doc/rfc/rfc3207.html
-date::  February 2002.
-type::: published
-value::: 2002
-keyword::
-abstract::
+* [[[SMTP-TLS,RFC 3207]]]
 
-[%bibitem]
-==== Using TLS with IMAP, POP3 and ACAP
-id:: IMAP-POP-TLS
-contributor.role:: author
-contributor.person.name.initial:: C.
-contributor.person.name.surname:: Newman
-link:: https://www.hjp.at/doc/rfc/rfc2595.html
-type::: techreport
-content::: https://www.hjp.at/doc/rfc/rfc2595.html
-date::  June 1999.
-type::: published
-value::: 1999
-keyword::
-abstract::
+* [[[IMAP-POP-TLS,RFC 2595]]]
 
 [bibliography]
 === Informative References
@@ -958,32 +874,7 @@ abstract::
 
 * [[[RFC3282,RFC 3282]]]
 
-[%bibitem]
-==== SMTP Service Extension for 8bit-MIMEtransport
-id:: BITMIME
-contributor.role:: author
-contributor.person.name.initial:: J.
-contributor.person.name.surname:: Klensin
-contributor.role_2:: author
-contributor.person.name.initial_2:: N.
-contributor.person.name.surname_2:: Freed
-contributor.role_3:: author
-contributor.person.name.initial_3:: M.
-contributor.person.name.surname_3:: Rose
-contributor.role_4:: author
-contributor.person.name.initial_4:: E.
-contributor.person.name.surname_4:: Stefferud
-contributor.role_5:: author
-contributor.person.name.initial_5:: D.
-contributor.person.name.surname_5:: Crocker
-link:: https://www.hjp.at/doc/rfc/rfc2595.html
-type::: techreport
-content::: https://www.hjp.at/doc/rfc/rfc2595.html
-date::  July 1994.
-type::: published
-value::: 1994
-keyword::
-abstract::
+* [[[BITMIME,RFC 1652]]]
 
 
 [appendix,obligation=informative]
