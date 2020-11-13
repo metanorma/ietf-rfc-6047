@@ -832,10 +832,8 @@ The "text/calendar" MIME media type was registered in <<iCAL>>.
 
 
 
-== References
-
 [bibliography]
-=== Normative References
+== Normative References
 
 * [[[RFC5322,RFC 5322]]]
 
@@ -868,7 +866,7 @@ The "text/calendar" MIME media type was registered in <<iCAL>>.
 * [[[IMAP-POP-TLS,RFC 2595]]]
 
 [bibliography]
-=== Informative References
+== Informative References
 
 * [[[RFC5598,RFC 5598]]]
 
